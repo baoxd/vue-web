@@ -39,6 +39,7 @@
         </Row>
     </div>
 </template>
+
 <script>
     export default {
         methods: {
