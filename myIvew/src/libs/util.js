@@ -6,4 +6,13 @@ util.title = function (title) {
     window.document.title = title;
 };
 
+util.getObjType =  function(obj){
+	if(!obj){
+		return obj;
+	}
+	var str = Object.prototype.toString.call(obj),
+		execRet = /\[object (\w+)\]/.exec(str);
+	return execRet.length >=2 ? execRet[1].toLocaleLowerCase() :'' ;
+}
+
 export default util;

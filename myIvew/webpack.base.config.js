@@ -22,7 +22,7 @@ module.exports = {
                             fallback: 'vue-style-loader'
                         }),
                         css: ExtractTextPlugin.extract({
-                            use: ['css-loader', 'autoprefixer-loader', 'less-loader'],
+                            use: ['css-loader?minimize', 'autoprefixer-loader', 'less-loader'],
                             fallback: 'vue-style-loader'
                         })
                     }
@@ -52,7 +52,7 @@ module.exports = {
                 })
             },
             {
-                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+                test: /\.(gif|jpg|png|woff|svg|eot|ttf)(\?.*)?$/,
                 loader: 'url-loader?limit=1024'
             },
             {
