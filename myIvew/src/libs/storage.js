@@ -35,6 +35,9 @@ let _storage = {
 			}else{
 				data = value
 			}
+
+			data = JSON.stringify(data)
+			
 			store.setItem(key, data)
 		}
 	},
@@ -45,21 +48,34 @@ let _storage = {
 		if(key){
 			let value = store.getItem(key)
 
-			if(value && util.getObjType(value) == 'object'){
-				if(value.hasOwnProperty(STORAGE_KEY_VALUE) && value.hasOwnProperty(STORAGE_KEY_TIME)
-					&& value.hasOwnProperty(STORAGE_KEY_DURATION)){
-					let preTime = value[STORAGE_KEY_TIME],
-						duration = value[STORAGE_KEY_DURATION];
+			if(value){
+				console.log(typeof value)
+				value = JSON.parse(value)
 
-					// 超时
-					if((curTime - preTime) > duration){
-						value = null 
-					}else{
-						value = value[STORAGE_KEY_VALUE]
+				if(util.getObjType(value) == 'object'){
+					if(value.hasOwnProperty(STORAGE_KEY_VALUE) && value.hasOwnProperty(STORAGE_KEY_TIME)
+						&& value.hasOwnProperty(STORAGE_KEY_DURATION)){
+						let preTime = value[STORAGE_KEY_TIME],
+							duration = value[STORAGE_KEY_DURATION];
+
+						// 超时
+						if((curTime - preTime) > duration){
+							value = null
+							this.remove(type, key)
+						}else{
+							value = value[STORAGE_KEY_VALUE]
+						}
 					}
 				}
 			}
 			return value
+		}
+	},
+	remove(type, key) {
+		let store = getStore(type)
+
+		if(key){
+			store.removeItem(key)
 		}
 	}
 }
@@ -71,6 +87,9 @@ function getStorage(type){
 		},
 		get(key) {
 			return _storage.get(type, key)
+		},
+		remove(key) {
+			_storage.remove(type, key)
 		}
 	}
 }

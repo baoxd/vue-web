@@ -16,7 +16,7 @@
 		</Form-item>
 		<Form-item class="login-no-bottom">
 			<Checkbox-group v-model="formLogin.remember">
-				<Checkbox label="记住密码" name="remember"></Checkbox>
+				<Checkbox label="记住密码" name="remember" ></Checkbox>
 			</Checkbox-group>
 		</Form-item>
 		<Form-item class="login-no-bottom">
@@ -34,7 +34,10 @@
 
 
 <script>
-	import storage from '../libs/storage'
+	import store from '../libs/storage'
+
+	const sessionStore = store.sessionStore
+
 
 	export default {
 		data() {
@@ -59,16 +62,35 @@
 			handleSubmit(name) {
 				this.$refs[name].validate((valid) => {
 					if(valid){
-						console.log('验证通过')
+						sessionStore.set('user', this.formLogin.username, 10)
+						this.$Message.success('提交成功!')
+						this.$router.push({path: '/'})
+					}else{
+						this.$Message.error('表单验证失败!')
+					}
+
+					console.log(this.formLogin.remember)
+					if(this.formLogin.remember[0]){
+						sessionStore.set('username', this.formLogin.username)
+						sessionStore.set('password', this.formLogin.password)
+					}else{
+						sessionStore.remove('username')
+						sessionStore.remove('password')
 					}
 				})
 			},
-			formLoginReset() {
-				console.log('formLoginReset')
+			formLoginReset(name) {
+				this.$refs[name].resetFields()
 			}
 		},
 		mounted() {
-
+			console.log(sessionStore.get('user'))
+			if(sessionStore.get('username')){
+				this.formLogin.username = sessionStore.get('username')
+			}
+			if(sessionStore.get('password')){
+				this.formLogin.password = sessionStore.get('password')
+			}
 		}
 	}
 </script>
