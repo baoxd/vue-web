@@ -1,21 +1,7 @@
-# iView-project
+# 说明
 
-This project is build for Vue.js 2 + vue-router + webpack2 + iView 2, just install and run.
+使用iview(基于view的UI库)搭建的web后台，持续更新中...
 
-## Install
-```bush
-// install dependencies
-npm install
-```
-## Run
-### Development
-```bush
-// For the first time, run init to create index.html
-npm run init
-npm run dev
-```
-### Production(Build)
-```bush
-npm run build
-```
-
+# 目标
+web开发时vue或者其他mvvm框架基本功能之一，之前一直没有练习过，忙里偷闲写一个基于iviewUI库的web-admin后台。 之后可能会加入其他
+基于vue的UI库。
