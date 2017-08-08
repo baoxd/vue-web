@@ -28,9 +28,9 @@ let _storage = {
 
 			if(time && util.getObjType(time) == 'number'){
 				data = {
-					STORAGE_KEY_VALUE: value,
-					STORAGE_KEY_DURATION: time * 60 * 1000,
-					STORAGE_KEY_TIME: curTime
+					'storage_key_value': value,
+					'storage_key_time': time * 60 * 1000,
+					'storage_key_duration': curTime
 				}
 			}else{
 				data = value
@@ -49,7 +49,6 @@ let _storage = {
 			let value = store.getItem(key)
 
 			if(value){
-				console.log(typeof value)
 				value = JSON.parse(value)
 
 				if(util.getObjType(value) == 'object'){

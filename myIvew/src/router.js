@@ -1,6 +1,7 @@
 import Login from './views/login'
 import NotFound from './views/NotFound'
-
+import Main from './views/main'
+import Home from './views/home'
 
 const routers = [
 	{
@@ -15,7 +16,29 @@ const routers = [
 	},
     {
         path: '/',
-        component: Login
+        component: Home,
+        name: '工作台',
+        iconCls: 'ios-home',
+        children: [
+        	{
+        		path: '/main',
+        		component: Main,
+        		name:'主页',
+        		hidden: false
+        	}
+        ]
+    },
+    {
+    	path: '/',
+    	component: Home,
+    	name:'',
+    	iconCls:'social-freebsd-devil',
+    	leaf:true,
+    	children:[{
+    		path:'/page6',
+    		component: Login,
+    		name:'证书打印'
+    	}]
     }
 ];
 export default routers;

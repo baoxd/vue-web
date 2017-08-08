@@ -69,7 +69,6 @@
 						this.$Message.error('表单验证失败!')
 					}
 
-					console.log(this.formLogin.remember)
 					if(this.formLogin.remember[0]){
 						sessionStore.set('username', this.formLogin.username)
 						sessionStore.set('password', this.formLogin.password)
@@ -84,7 +83,6 @@
 			}
 		},
 		mounted() {
-			console.log(sessionStore.get('user'))
 			if(sessionStore.get('username')){
 				this.formLogin.username = sessionStore.get('username')
 			}
