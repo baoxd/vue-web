@@ -2,6 +2,7 @@ import Login from './views/login'
 import NotFound from './views/NotFound'
 import Main from './views/main'
 import Home from './views/home'
+import Table from './views/nav1/table'
 
 const routers = [
 	{
@@ -24,6 +25,12 @@ const routers = [
         		path: '/main',
         		component: Main,
         		name:'主页',
+        		hidden: false
+        	},
+        	{
+        		path: '/table',
+        		component: Table,
+        		name: '表格',
         		hidden: false
         	}
         ]

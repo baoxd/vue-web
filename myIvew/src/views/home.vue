@@ -6,7 +6,7 @@
                 <Menu :model="modeType" theme="dark" width="auto" :active-name="this.$route.path" :open-names="openNames" @on-select="menuSelect" accordion> 
                     <div class="layout-logo-left">
                         <Icon type="paper-airplane" :size="logoSize" v-show="logoIsDisplay"></Icon>
-                        <div class="layout-text">iview vue-web测试</div>
+                        <div class="layout-text">vue-web测试</div>
                     </div>
                     <template v-for="(item, index) in this.$router.options.routes" v-if="!item.hidden" >
                         <Submenu :name="item.name" v-if="!item.leaf" :key="index">
@@ -157,7 +157,6 @@ export default {
             })
         },
         cancel(e){
-            console.log(e)
             this.modal1 = false
             this.$Message.info('点击了取消')
         }

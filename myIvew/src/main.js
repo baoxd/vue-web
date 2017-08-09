@@ -6,7 +6,12 @@ import Util from './libs/util';
 import App from './app.vue';
 import 'iview/dist/styles/iview.css';
 import store from './libs/storage';
+import Mock from './mock'
 const sessionStore = store.sessionStore;
+
+
+// 启动模拟请求回应
+Mock.bootstrap()
 
 Vue.use(VueRouter);
 Vue.use(iView);
