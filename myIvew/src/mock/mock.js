@@ -34,5 +34,20 @@ export default {
 				}, 500)
 			})
 		})
+
+		// 删除用户
+		mock.onGet('/user/remove').reply(config => {
+			let { id } = config.params
+			_Users = _Users.filter(user => user.id !== id)
+
+			return new Promise((resolve, reject) => {
+				setTimeout(() => {
+					resolve([200, {
+						code: 200,
+						msg: '删除成功'
+					}])
+				}, 500)
+			})
+		})
 	}
 } 

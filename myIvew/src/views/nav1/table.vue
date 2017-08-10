@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Table :data="tableData" :columns="tableColumns" stripe border>
+		<Table :data="tableData" :columns="tableColumns" stripe border @on-select="selectTable">
 		</Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float:right;">
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { getUserListPage } from '../../api/api'
+import { getUserListPage, removeUser, editUser } from '../../api/api'
 
 export default {
 	data(){
@@ -97,6 +97,11 @@ export default {
 		}
 	},
 	methods:{
+		// 选择table
+		selectTable() {
+			console.log('table被选择')
+			console.log(arguments)
+		},
 		mockTableData() {
 			// 初始化数据
 			let params = {
@@ -111,14 +116,37 @@ export default {
 			})
 
 		},
-		changePage() {
-
+		show(index) {
+			let user = this.tableData[index]
+			this.$Modal.info({
+				title: '用户信息',
+				content: `姓名：${user.name}<br>年龄：${user.age}<br>地址：${user.addr}`
+			})
 		},
-		show() {
+		remove(index) {
+			let self = this
 
+			this.$Modal.confirm({
+				title: '用户信息',
+				content: '是否删除此记录',
+				onOk() {
+					this.$Loading.start()
+					let params = {id: index+1}
+
+					removeUser( params ).then((res) => {
+						let resData = res.data
+						if(resData.code == 200){
+							self.mockTableData()
+						}else{
+							this.$Message.error('删除失败')
+						}
+					})
+				}
+			})
 		},
-		remove() {
-
+		changePage(page) {
+			this.page = page
+			this.mockTableData()
 		}
 	},
 

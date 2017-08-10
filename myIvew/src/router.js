@@ -3,6 +3,8 @@ import NotFound from './views/NotFound'
 import Main from './views/main'
 import Home from './views/home'
 import Table from './views/nav1/table'
+import User from './views/nav1/user'
+import Form from './views/nav1/form'
 
 const routers = [
 	{
@@ -31,6 +33,18 @@ const routers = [
         		path: '/table',
         		component: Table,
         		name: '表格',
+        		hidden: false
+        	},
+        	{
+        		path: '/userlist',
+        		component: User,
+        		name: '列表',
+        		hidden: false
+        	},
+        	{
+        		path: '/form',
+        		component: Form,
+        		name: '表单',
         		hidden: false
         	}
         ]
