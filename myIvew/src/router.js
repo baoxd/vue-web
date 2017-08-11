@@ -5,6 +5,7 @@ import Home from './views/home'
 import Table from './views/nav1/table'
 import User from './views/nav1/user'
 import Form from './views/nav1/form'
+import Echarts from './views/charts/echarts'
 
 const routers = [
 	{
@@ -52,13 +53,12 @@ const routers = [
     {
     	path: '/',
     	component: Home,
-    	name:'',
-    	iconCls:'social-freebsd-devil',
-    	leaf:true,
+    	name:'报表',
+    	iconCls:'stats-bars',
     	children:[{
-    		path:'/page6',
-    		component: Login,
-    		name:'证书打印'
+    		path:'/echarts',
+    		component: Echarts,
+    		name:'echarts'
     	}]
     }
 ];
