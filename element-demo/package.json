@@ -1,0 +1,24 @@
+{
+  "name": "element-demo",
+  "version": "1.0.0",
+  "description": "vue ,element-ui demo ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baoxd/vue-web.git"
+  },
+  "keywords": [
+    "vue",
+    "element-ui",
+    "vue-web"
+  ],
+  "author": "baoxd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baoxd/vue-web/issues"
+  },
+  "homepage": "https://github.com/baoxd/vue-web#readme"
+}
