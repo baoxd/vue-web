@@ -9,7 +9,7 @@ module.exports = {
 		path: path.resolve(__dirname, './dist')
 	},
 	resolve: {
-		extensions: ['.js', '.vue', '.json'],
+		extensions: ['*','.js', '.vue', '.json','.css', '.less', '.scss'],
 		modules:[
 			path.resolve(__dirname, './src'),
 			path.resolve(__dirname, './node_modules')
@@ -25,7 +25,7 @@ module.exports = {
 				test: /\.js$/,
 				loader: 'babel-loader',
 				include:[path.resolve(__dirname, './src')],
-				exclude: /node_modules/
+				exclude: path.resolve(__dirname, './node_modules')
 			},
 			{
 				test: /\.css$/,
@@ -44,6 +44,42 @@ module.exports = {
 						}
 					}
 				]
+			},
+			{
+				test: /\.less$/,
+				use: [
+					'style-loader',
+					'css-loader',
+					{
+						loader: 'postcss-loader',
+						options: {
+							plugins: [require('autoprefixer')()]
+						}
+					},
+					'less-loader'
+				]
+			},
+			{
+				test: /\.scss$/,
+				use: [
+					'style-loader',
+					'css-loader',
+					{
+						loader: 'postcss-loader',
+						options: {
+							plugins: [require('autoprefixer')()]
+						}
+					},
+					'sass-loader'
+				]
+			},
+			{
+				test: /\.(gif|jpg|png|woff|svg|eot|ttf)(\?.*)?$/,
+                loader: 'url-loader?limit=1024'
+			},
+			{
+				test: /\.html$/,
+				loader: 'html-loader'
 			}
 		]
 	}
