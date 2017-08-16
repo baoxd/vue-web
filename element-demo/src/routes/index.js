@@ -16,6 +16,14 @@ const routes = [
 			{
 				path: '/',
 				component: resolve => require(['../components/page/Readme.vue'], resolve)
+			},
+			{
+				path: '/basetable',
+				component: resolve => require(['../components/page/BaseTable.vue'], resolve)
+			},
+			{
+				path: '/vuetable',
+				component: resolve => require(['../components/page/VueTable.vue'], resolve)
 			}
 		]
 	}
