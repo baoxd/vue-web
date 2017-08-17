@@ -24,6 +24,18 @@ const routes = [
 			{
 				path: '/vuetable',
 				component: resolve => require(['../components/page/VueTable.vue'], resolve)
+			},
+			{
+				path: '/baseform',
+				component: resolve => require(['../components/page/BaseForm.vue'], resolve)
+			},
+			{
+				path: '/vueeditor',
+				component: resolve => require(['../components/page/VueEditor.vue'], resolve)
+			},
+			{
+				path: '/markdown',
+				component: resolve => require(['../components/page/Markdown.vue'], resolve)
 			}
 		]
 	}
