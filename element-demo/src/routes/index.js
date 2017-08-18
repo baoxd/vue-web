@@ -36,6 +36,10 @@ const routes = [
 			{
 				path: '/markdown',
 				component: resolve => require(['../components/page/Markdown.vue'], resolve)
+			},
+			{
+				path: '/upload',
+				component: resolve => require(['../components/page/Upload.vue'], resolve)
 			}
 		]
 	}
