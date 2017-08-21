@@ -40,6 +40,10 @@ const routes = [
 			{
 				path: '/upload',
 				component: resolve => require(['../components/page/Upload.vue'], resolve)
+			},
+			{
+				path: '/basecharts',
+				component: resolve => require(['../components/page/BaseCharts.vue'], resolve)
 			}
 		]
 	}
